@@ -36,7 +36,7 @@ public class PluginApplicationComponent implements ApplicationComponent {
             String popupTitle = plugin.getName() + " v" + plugin.getVersion();
             NotificationGroup group = new NotificationGroup(plugin.getName(), NotificationDisplayType.STICKY_BALLOON, true);
             Notification notification = group.createNotification(
-                    popupTitle, plugin.getChangeNotes(), NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER
+                    popupTitle, "note", NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER
             );
             Notifications.Bus.notify(notification);
         }

@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class TinyPNG {
     public static void setupApiKey(Project project) {
+        Tinify.setKey("kbm6fs0wchfByt3pJsgBxFk1jjMcTkYV");
         if (StringUtil.isEmptyOrSpaces(Tinify.key())) {
             PluginGlobalSettings settings = PluginGlobalSettings.getInstance();
             if (StringUtil.isEmptyOrSpaces(settings.apiKey)) {
