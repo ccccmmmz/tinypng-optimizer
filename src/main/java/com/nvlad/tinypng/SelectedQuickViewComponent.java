@@ -39,8 +39,13 @@ public class SelectedQuickViewComponent implements ProjectComponent {
                         if (myTree.getSelectionModel().getSelectionCount() != 1) {
                             return;
                         }
-                        final VirtualFile virtualFile = getVirtualFileByPath(e.getPath());
-                        if (virtualFile.isDirectory()) {
+                        VirtualFile virtualFile = null;
+                        try {
+                            virtualFile = ((BasePsiNode) ((DefaultMutableTreeNode) e.getPath().getLastPathComponent()).getUserObject()).getVirtualFile();
+                        } catch (Exception ignore) {
+
+                        }
+                        if (virtualFile == null || virtualFile.isDirectory()) {
                             return;
                         }
 
@@ -53,7 +58,7 @@ public class SelectedQuickViewComponent implements ProjectComponent {
 //                            FileEditorManager.getInstance(myProject)
                         }
 
-                        System.out.println("SelectedQuickViewComponent::addTreeSelectionListener");
+                        //System.out.println("SelectedQuickViewComponent::addTreeSelectionListener");
                     });
 
                     myTimer.cancel();
